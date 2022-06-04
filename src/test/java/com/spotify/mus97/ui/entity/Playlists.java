@@ -2,18 +2,18 @@ package com.spotify.mus97.ui.entity;
 
 public class Playlists {
 
-    private String playlistName;
+    private String plName;
 
     public Playlists(String playlistName) {
-        this.playlistName = playlistName;
+        this.plName = playlistName;
     }
 
-    public String getPlaylistName() {
-        return playlistName;
+    public String getPlName() {
+        return plName;
     }
 
     @Override
     public String toString() {
-        return ("\nPlaylist: " + playlistName) ;
+        return ("\nPlaylist: " + plName) ;
     }
 }

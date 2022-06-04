@@ -26,6 +26,11 @@ public class AbstractPage {
         return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.visibilityOf(webElement));
     }
+    protected WebElement waitForElementToBeClickable(WebElement webElement) {
+        return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
+                .until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
     protected List<WebElement> waitForVisibilityOfElements(List<WebElement> webElement) {
         return new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
                 .until(ExpectedConditions.visibilityOfAllElements(webElement));

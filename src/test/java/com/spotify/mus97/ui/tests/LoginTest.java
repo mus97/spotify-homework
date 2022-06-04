@@ -5,9 +5,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends AbstractTest{
-    @Test
-    public void loginTest(){
+    @Test (description = "Testing of logging in with valid assertion")
+    public void loginTestValid(){
         String username = "CustomUser";
+        Assert.assertTrue(new CheckLoginStep().checkUsername(username));
+    }
+    @Test (description = "Testing of logging in with invalid assertion")
+    public void loginTestInvalid(){
+        String username = "AlterEgo";
         Assert.assertTrue(new CheckLoginStep().checkUsername(username));
     }
 

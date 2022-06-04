@@ -1,11 +1,9 @@
 package com.spotify.mus97.ui.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
 
 public class AuthorizedHomepage extends AbstractPage {
 
@@ -17,8 +15,6 @@ public class AuthorizedHomepage extends AbstractPage {
     protected WebElement createPlaylistButton;
     @FindBy (xpath = "//button[@data-testid='user-widget-link']")
     protected WebElement userButton;
-    @FindBy (xpath = "//*[@data-testid='rootlist-item']")
-    protected List<WebElement> usersPlaylists;
 
     public AuthorizedHomepage clickSearchButton (){
         waitForVisibilityOfElement(searchButton).click();
@@ -33,5 +29,6 @@ public class AuthorizedHomepage extends AbstractPage {
         waitForVisibilityOfElement(createPlaylistButton).click();
         return new PlaylistPage();
     }
+
 
 }

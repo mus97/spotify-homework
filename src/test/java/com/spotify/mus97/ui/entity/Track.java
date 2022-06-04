@@ -3,8 +3,6 @@ package com.spotify.mus97.ui.entity;
 public class Track {
     private String artist;
     private String track;
-    private String message;
-
 
     public Track(String track, String artist) {
         this.artist = artist;
@@ -14,11 +12,6 @@ public class Track {
     public String getArtist() {
         return artist;
     }
-
-    public String getTrack() {
-        return track;
-    }
-
 
     @Override
     public String toString() {
