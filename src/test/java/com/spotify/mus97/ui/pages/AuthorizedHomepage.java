@@ -15,6 +15,8 @@ public class AuthorizedHomepage extends AbstractPage {
     protected WebElement createPlaylistButton;
     @FindBy (xpath = "//button[@data-testid='user-widget-link']")
     protected WebElement userButton;
+    @FindBy (xpath = "//span[@class='Message-sc-15vkh7g-0 jHItEP']")
+    protected WebElement wrongData;
 
     public AuthorizedHomepage clickSearchButton (){
         waitForVisibilityOfElement(searchButton).click();
@@ -29,6 +31,8 @@ public class AuthorizedHomepage extends AbstractPage {
         waitForVisibilityOfElement(createPlaylistButton).click();
         return new PlaylistPage();
     }
-
+    public String incorrectLogin(){
+        return waitForVisibilityOfElement(wrongData).getText();
+    }
 
 }

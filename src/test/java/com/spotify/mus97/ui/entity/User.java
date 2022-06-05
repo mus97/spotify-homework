@@ -8,5 +8,10 @@ public class User {
         this.username = username; //31mwtfrzpnqqccvvdz63p575e32m
         this.password = password; //huggy wuggy
     }
-
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
+    }
 }

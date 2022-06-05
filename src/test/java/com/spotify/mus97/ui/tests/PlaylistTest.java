@@ -12,8 +12,9 @@ public class PlaylistTest extends AbstractTest{
         String getNameOfJustCreatedPlaylist =new AuthorizedHomepage().createPlaylist().getPlaylistName();
         Assert.assertTrue(new CheckUsersPlaylistsStep().checkCreatedPlInAllPl(getNameOfJustCreatedPlaylist));
     }
-    @Test (dependsOnMethods = "checkPresenceOfNewPlaylist")
+    @Test //(dependsOnMethods = "checkPresenceOfNewPlaylist")
     public void deleteAllUsersPlaylists() {
+        new AuthorizedHomepage().createPlaylist();
         CheckUsersPlaylistsStep checkUsersPlaylistsStep = new CheckUsersPlaylistsStep().deleteAllPlaylists();
         Assert.assertTrue(checkUsersPlaylistsStep.checkAllPlaylistsAreDeleted());
     }

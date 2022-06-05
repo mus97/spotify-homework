@@ -11,9 +11,9 @@ public class PlaylistPage extends AbstractPage{
     protected WebElement nameOfCreatedPlaylist;
     @FindBy (xpath = "//*[@data-testid='rootlist-item']")
     protected List<WebElement> usersPlaylists;
-    @FindBy (xpath = "//*[text()[contains (.,'Удалить')]]/parent::button")
+    @FindBy (xpath = "//li[5]/button")
     protected WebElement deletePlaylistButton;
-    @FindBy (xpath = "//div[text()='УДАЛИТЬ']/parent::button")
+    @FindBy (xpath = "//div[@class='ButtonInner-sc-14ud5tc-0 hKccLC encore-bright-accent-set']/parent::button")
     protected WebElement surelyDeletePlaylistButton;
 
     String nameOfPlaylist;

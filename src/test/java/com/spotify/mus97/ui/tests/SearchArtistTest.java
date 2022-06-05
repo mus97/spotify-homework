@@ -24,6 +24,6 @@ public class SearchArtistTest extends AbstractTest{
     @Test(dataProvider = "Invalid artist names", description = "testing of searching with invalid request")
     public void testArtistHasTracksInvalid(String artist){
         SearchResultStep searchResultStep=new SearchResultStep().openSearchResultByRequest(artist);
-        Assert.assertTrue(searchResultStep.doesSearchResultListContainArtist(artist));
+        Assert.assertFalse(searchResultStep.doesSearchResultListContainArtist(artist));
     }
 }

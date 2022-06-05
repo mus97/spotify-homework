@@ -5,9 +5,10 @@ import org.openqa.selenium.By;
 
 public class CheckLoginStep extends AuthorizedHomepage {
     String userButtonContent;
-    public String checkUserButton(){
+
+    public String checkUserButton() {
         userButtonContent = waitForVisibilityOfElement(userButton).findElement(By.xpath("./span")).getText();
-        logger.info("Username is "+userButtonContent);
+        logger.info("Username is " + userButtonContent);
         return userButtonContent;
 
     }

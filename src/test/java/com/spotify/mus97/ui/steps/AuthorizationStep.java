@@ -7,7 +7,7 @@ import com.spotify.mus97.ui.utils.UserCreator;
 public class AuthorizationStep {
 
     public static void logIn() {
-        User user = UserCreator.createUser();
+        User user = UserCreator.createValidUser();
         new SpotifyHomepage().openPage()
                 .clickLoginButton().authorize(user);
     }

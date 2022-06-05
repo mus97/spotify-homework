@@ -14,9 +14,10 @@ public class LoginPage extends AbstractPage {
 
 
     public AuthorizedHomepage authorize(User user) {
-        waitForVisibilityOfElement(inputUserName).sendKeys("31mwtfrzpnqqccvvdz63p575e32m");
-        inputPassword.sendKeys("huggy wuggy");
+
+        waitForVisibilityOfElement(inputUserName).sendKeys(user.getUsername());
+        inputPassword.sendKeys(user.getPassword());
         loginButton.click();
-        return new AuthorizedHomepage();
+         return new AuthorizedHomepage();
     }
 }
