@@ -1,18 +1,23 @@
 package com.spotify.mus97.api.test;
 
+import org.apache.http.HttpHeaders;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicHeader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.util.Arrays;
 
+import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
+import static org.hamcrest.Matchers.is;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
 public class GetArticles extends AbstractTest {
-    private static final Logger logger = LogManager.getLogger();
 
     @Test
     public void testGetUserInfo() {
@@ -24,7 +29,14 @@ public class GetArticles extends AbstractTest {
         assertEquals(client.getStatusCode(), 200);
         assertTrue(client.getListBodyValuesByKey(key).contains(value));
     }
-
+    @Test
+    public void testGetUserInfoRestAssured() {
+        String token = "Bearer BQAje98myA9LOf3-HZobWQOD27jYjMRMYvLnOKXH_aHEfhdyuOkIgzjnlmkGfS97QdwTJ5Op37KgfL_4LGDvJv1LzGgB8uYmO6lQQhRDyNYx-NNuwnoTD0NhpfwWm9grf9mNFqoQ0Oza9Lk2cp8tiA4yx2xXLFhkWDcW-Igzxw3JfEed-qNlgJnRsL6WYK162tsrKSEeAG146RbJanpuMCeFBdELa_V7fuURLoOc33B3Iduo3bLT2jSpTOZZAY33tmPMgb3Rgl7zhsCFEwgUszeNIpLxUFsMJ473e2cXnaQAQn1kRomm";
+        given().header(HttpHeaders.AUTHORIZATION,token)
+        .when().get("https://api.spotify.com/v1/me").
+                then().assertThat().statusCode(200).
+                and().body("display_name", is("Мария Кучинская"));
+    }
     @Test
     public void testGetRecommendations() {
         String url = "https://api.spotify.com/v1/recommendations/available-genre-seeds";
