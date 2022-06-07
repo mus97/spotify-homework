@@ -14,6 +14,6 @@ public class Playlists {
 
     @Override
     public String toString() {
-        return ("\nPlaylist: " + plName) ;
+        return ("\nPlaylist: " + plName);
     }
 }

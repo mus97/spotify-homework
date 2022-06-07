@@ -18,6 +18,6 @@ public class LoginPage extends AbstractPage {
         waitForVisibilityOfElement(inputUserName).sendKeys(user.getUsername());
         inputPassword.sendKeys(user.getPassword());
         loginButton.click();
-         return new AuthorizedHomepage();
+        return new AuthorizedHomepage();
     }
 }

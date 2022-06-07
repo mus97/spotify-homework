@@ -16,6 +16,6 @@ public class Track {
     @Override
     public String toString() {
         return ("\nartist: " + artist + " " +
-                ", track: " + track + "") ;
+                ", track: " + track + "");
     }
 }

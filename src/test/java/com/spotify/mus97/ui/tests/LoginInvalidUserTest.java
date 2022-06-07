@@ -9,12 +9,12 @@ import org.testng.annotations.Test;
 import static com.spotify.mus97.ui.driver.DriverSingleton.closeDriver;
 
 public class LoginInvalidUserTest {
-    @Test
-    public void loginTestInvalid(){
+    @Test(priority = 1)
+    public void loginTestInvalid() {
         User user = UserCreator.createInvalidUser();
         Assert.assertEquals((new SpotifyHomepage().openPage()
-                .clickLoginButton().authorize(user).incorrectLogin()), "Неправильное имя пользователя или пароль.");
+                .clickLoginButton().authorize(user).incorrectLogin()),
+                "Неправильное имя пользователя или пароль.");
         closeDriver();
-
     }
 }

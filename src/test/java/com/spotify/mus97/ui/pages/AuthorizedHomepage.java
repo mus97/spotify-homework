@@ -13,25 +13,28 @@ public class AuthorizedHomepage extends AbstractPage {
     protected WebElement searchInput;
     @FindBy(xpath = "//button[@data-testid='create-playlist-button']")
     protected WebElement createPlaylistButton;
-    @FindBy (xpath = "//button[@data-testid='user-widget-link']")
+    @FindBy(xpath = "//button[@data-testid='user-widget-link']")
     protected WebElement userButton;
-    @FindBy (xpath = "//span[@class='Message-sc-15vkh7g-0 jHItEP']")
+    @FindBy(xpath = "//span[@class='Message-sc-15vkh7g-0 jHItEP']")
     protected WebElement wrongData;
 
-    public AuthorizedHomepage clickSearchButton (){
+    public AuthorizedHomepage clickSearchButton() {
         waitForVisibilityOfElement(searchButton).click();
         return this;
     }
+
     public SearchResultPage writeSearchQuery(String searchQuery) {
         waitForVisibilityOfElement(searchInput).clear();
         searchInput.sendKeys(searchQuery, Keys.ENTER);
         return new SearchResultPage();
     }
-    public PlaylistPage createPlaylist(){
+
+    public PlaylistPage createPlaylist() {
         waitForVisibilityOfElement(createPlaylistButton).click();
         return new PlaylistPage();
     }
-    public String incorrectLogin(){
+
+    public String incorrectLogin() {
         return waitForVisibilityOfElement(wrongData).getText();
     }
 

@@ -21,7 +21,7 @@ public class Client {
     private CloseableHttpClient client;
     private CloseableHttpResponse response;
     private HttpPost request;
-    private String token = "Bearer BQAje98myA9LOf3-HZobWQOD27jYjMRMYvLnOKXH_aHEfhdyuOkIgzjnlmkGfS97QdwTJ5Op37KgfL_4LGDvJv1LzGgB8uYmO6lQQhRDyNYx-NNuwnoTD0NhpfwWm9grf9mNFqoQ0Oza9Lk2cp8tiA4yx2xXLFhkWDcW-Igzxw3JfEed-qNlgJnRsL6WYK162tsrKSEeAG146RbJanpuMCeFBdELa_V7fuURLoOc33B3Iduo3bLT2jSpTOZZAY33tmPMgb3Rgl7zhsCFEwgUszeNIpLxUFsMJ473e2cXnaQAQn1kRomm";
+    private String token = "Bearer BQD3_6MqhHvQtE0R3p3ExG2Ilgz_vWX9kufxFzFrnedTF0fg9o0TLy4brLAPVnXM37Kg0JB2_7mnQgMafOTtJDY8J2qhUmN8oXioT-Sys2lYmqYM1sQWhX9D5xO-VA3vU1W5xkNIqmKF6P0xEGfwmirDKNHXHmS5FIOviSI4Nfb86KeCjKgc0wfIOPqMG9-tmtVp2hT7vtX413vMiCxElCi5SOD5KsmpcXEVu2Xb4LK9ezA0qx2iUxXBZHfYruVR5fXU2RGcR0G1p0Gg01dVMHGoCmjdaIxOWT8z5DalNliEhHxCYHeT";
 
     private int statusCode;
     private String body;
@@ -39,6 +39,7 @@ public class Client {
             logger.warn(e.getMessage());
         }
     }
+
     public void sendPost(String url, StringEntity params) {
         try {
             request = new HttpPost(url);
@@ -49,6 +50,7 @@ public class Client {
             logger.warn(e.getMessage());
         }
     }
+
     public void sendPut(String url) {
         try {
             response = client.execute(new HttpPut(url));
@@ -56,6 +58,7 @@ public class Client {
             logger.warn(e.getMessage());
         }
     }
+
     public void sendDelete(String url) {
         try {
             response = client.execute(new HttpDelete(url));
@@ -72,12 +75,6 @@ public class Client {
 
     public String getBody() {
         try {
-//            InputStream bodyAsInputStream = response.getEntity().getContent();
-//            body = new BufferedReader(
-//                    new InputStreamReader(bodyAsInputStream, StandardCharsets.UTF_8))
-//                    .lines()
-//                    .collect(Collectors.joining("\n"));
-
             body = EntityUtils.toString(response.getEntity());
             logger.info(body);
         } catch (IOException e) {
@@ -88,16 +85,16 @@ public class Client {
 
     public List<String> getListBodyValuesByKey(String key) {
         List<String> valuesList = new ArrayList<>();
-        if (body.startsWith("[")){
+        if (body.startsWith("[")) {
             JSONArray jsonArray = new JSONArray(body);
             List<JSONObject> jsonObjectList = new ArrayList<>();
             for (Object jsonObject : jsonArray) {
-                jsonObjectList.add( ((JSONObject) jsonObject).getJSONObject(key));
-            }for (JSONObject jsonObject : jsonObjectList) {
+                jsonObjectList.add(((JSONObject) jsonObject).getJSONObject(key));
+            }
+            for (JSONObject jsonObject : jsonObjectList) {
                 valuesList.add(jsonObject.optString(key));
             }
-        }
-        else {
+        } else {
             JSONObject jsonObject = new JSONObject(body);
             valuesList.add(jsonObject.optString(key));
         }

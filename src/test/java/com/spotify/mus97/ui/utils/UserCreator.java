@@ -12,6 +12,7 @@ public class UserCreator {
     public static User createValidUser() {
         return new User(USER_NAME, USER_PASSWORD);
     }
+
     public static User createInvalidUser() {
         return new User(USER_NAME_INVALID, USER_PASSWORD_INVALID);
     }

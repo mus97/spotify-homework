@@ -26,7 +26,7 @@ public class SearchResultStep extends SearchResultPage {
         waitForVisibilityOfElements(artistTracks);
         logger.info("Most popular songs:");
         for (WebElement artistTrack : artistTracks) {
-            String trackName =  waitForVisibilityOfElement(artistTrack).findElement(By.xpath(".//*[@class='Type__TypeElement-goli3j-0 fCtMzo t_yrXoUO3qGsJS4Y6iXX standalone-ellipsis-one-line']")).getText();
+            String trackName = waitForVisibilityOfElement(artistTrack).findElement(By.xpath(".//*[@class='Type__TypeElement-goli3j-0 fCtMzo t_yrXoUO3qGsJS4Y6iXX standalone-ellipsis-one-line']")).getText();
             try {
                 artistName = waitForVisibilityOfElement(artistTrack).findElement(By.xpath(".//*[@class='Type__TypeElement-goli3j-0 hHrtFe rq2VQ5mb9SDAFWbBIUIn standalone-ellipsis-one-line']/a")).getText();
             } catch (Exception e) {

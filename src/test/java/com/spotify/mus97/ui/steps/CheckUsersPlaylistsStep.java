@@ -35,20 +35,22 @@ public class CheckUsersPlaylistsStep extends PlaylistPage {
     }
 
     Actions actions = new Actions(driver);
-    public CheckUsersPlaylistsStep deleteAllPlaylists(){
+
+    public CheckUsersPlaylistsStep deleteAllPlaylists() {
         waitForVisibilityOfElements(usersPlaylists);
         int i = usersPlaylists.size();
         for (WebElement userPlaylistName : usersPlaylists) {
             actions.contextClick(waitForElementToBeClickable(userPlaylistName)).perform();
             actions.click(waitForElementToBeClickable(deletePlaylistButton)).perform();
             actions.click(waitForVisibilityOfElement(surelyDeletePlaylistButton)).perform();
-            i-=1;
+            i -= 1;
             new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS))
-                    .until(ExpectedConditions.numberOfElementsToBe(By.xpath("//*[@data-testid='rootlist-item']"),(i)));
+                    .until(ExpectedConditions.numberOfElementsToBe(By.xpath("//*[@data-testid='rootlist-item']"), (i)));
         }
         return this;
     }
-    public boolean checkAllPlaylistsAreDeleted(){
+
+    public boolean checkAllPlaylistsAreDeleted() {
         boolean noPlaylists = usersPlaylists.isEmpty();
         logger.info("You deleted all playlists");
         return noPlaylists;
